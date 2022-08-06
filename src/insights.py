@@ -42,7 +42,13 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filtered_jobs = []
+
+    for job in jobs:
+        if job["job_type"] == job_type:
+            filtered_jobs.append(job)
+
+    return filtered_jobs
 
 
 def get_unique_industries(path):
@@ -60,7 +66,15 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    data = read(path)
+
+    industries = []
+
+    for row in data:
+        if row["industry"] not in industries and row["industry"] != "":
+            industries.append(row["industry"])
+
+    return industries
 
 
 def filter_by_industry(jobs, industry):
