@@ -214,9 +214,7 @@ def filter_by_salary_range(jobs, salary):
                 }
             if matches_salary_range(range, salary):
                 filtered_jobs.append(job)
-        except ValueError:
-            pass
-        except TypeError:
+        except (ValueError, TypeError):
             pass
 
     return filtered_jobs
